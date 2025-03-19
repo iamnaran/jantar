@@ -13,8 +13,12 @@
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/core" />
             <option value="$PROJECT_DIR$/core/common" />
+            <option value="$PROJECT_DIR$/core/designsystem" />
             <option value="$PROJECT_DIR$/core/di" />
             <option value="$PROJECT_DIR$/core/network" />
+            <option value="$PROJECT_DIR$/core/ui" />
+            <option value="$PROJECT_DIR$/features" />
+            <option value="$PROJECT_DIR$/features/camera" />
           </set>
         </option>
         <option name="resolveExternalAnnotations" value="false" />

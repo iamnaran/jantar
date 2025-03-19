@@ -1,6 +1,5 @@
-package com.iamnaran.jantar.ui.theme
+package com.iamnaran.designsystem
 
-import android.app.Activity
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme

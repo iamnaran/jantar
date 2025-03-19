@@ -41,6 +41,9 @@ android {
 
 dependencies {
 
+    implementation(project(":features:camera"))
+    implementation(project(":core:designsystem"))
+
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.lifecycle.viewmodel.compose)
@@ -52,15 +55,8 @@ dependencies {
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
 
-    implementation(libs.camerax.core)
-    implementation(libs.camerax.camera2)
-    implementation(libs.camerax.lifecycle)
-    implementation(libs.camerax.view)
-    implementation(libs.camerax.compose)
+    implementation(libs.multidex)
 
-    implementation(libs.kotlinx.coroutines.core)
-    implementation(libs.kotlinx.serialization.json)
-    implementation(libs.kotlinx.datetime)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

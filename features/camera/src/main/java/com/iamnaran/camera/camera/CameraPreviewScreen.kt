@@ -1,4 +1,4 @@
-package com.iamnaran.jantar.camera
+package com.iamnaran.camera.camera
 
 import android.Manifest
 import android.app.Activity

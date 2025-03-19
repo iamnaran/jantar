@@ -1,4 +1,4 @@
-package com.iamnaran.jantar.camera
+package com.iamnaran.camera.camera
 
 enum class PermissionStatus {
     UNKNOWN, GRANTED, DENIED

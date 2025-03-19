@@ -12,20 +12,22 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.iamnaran.jantar.camera.CameraPreviewScreen
-import com.iamnaran.jantar.ui.theme.JantarTheme
+import com.iamnaran.camera.camera.CameraPreviewScreen
+import com.iamnaran.designsystem.JantarTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            JantarTheme {
+            com.iamnaran.designsystem.JantarTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
 
-                    Box(modifier = Modifier
-                        .padding(innerPadding)
-                        .fillMaxSize())
+                    Box(
+                        modifier = Modifier
+                            .padding(innerPadding)
+                            .fillMaxSize()
+                    )
                     CameraPreviewScreen() {
                         Log.e("Camera Captured", it.previewMediaStatus.name.toString())
                     }
@@ -39,9 +41,7 @@ class MainActivity : ComponentActivity() {
 @Preview(showBackground = true)
 @Composable
 fun GreetingPreview() {
-    JantarTheme {
-        CameraPreviewScreen(){
+    com.iamnaran.designsystem.JantarTheme {
 
-        }
     }
 }

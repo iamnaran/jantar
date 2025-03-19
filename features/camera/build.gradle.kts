@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace = "com.iamnaran.di"
+    namespace = "com.iamnaran.camera"
     compileSdk = 35
 
     defaultConfig {
@@ -38,13 +38,13 @@ dependencies {
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
 
-
-    implementation(libs.koin.core)
-    implementation(libs.koin.compose)
-    implementation(libs.koin.android)
+    implementation(libs.camerax.core)
+    implementation(libs.camerax.camera2)
+    implementation(libs.camerax.lifecycle)
+    implementation(libs.camerax.view)
+    implementation(libs.camerax.compose)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
-
 }

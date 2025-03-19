@@ -1,4 +1,4 @@
-package com.iamnaran.jantar.camera
+package com.iamnaran.camera.camera
 
 data class PreviewMedia(val uriString: String, val previewMediaStatus: PreviewMediaStatus)
 

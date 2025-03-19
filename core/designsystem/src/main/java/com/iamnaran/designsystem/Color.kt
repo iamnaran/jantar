@@ -1,4 +1,4 @@
-package com.iamnaran.jantar.ui.theme
+package com.iamnaran.designsystem
 
 import androidx.compose.ui.graphics.Color
 
