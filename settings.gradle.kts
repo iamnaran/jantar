@@ -21,3 +21,6 @@ dependencyResolutionManagement {
 
 rootProject.name = "jantar"
 include(":app")
+include(":core:network")
+include(":core:common")
+include(":core:di")

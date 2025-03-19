@@ -58,6 +58,10 @@ dependencies {
     implementation(libs.camerax.view)
     implementation(libs.camerax.compose)
 
+    implementation(libs.kotlinx.coroutines.core)
+    implementation(libs.kotlinx.serialization.json)
+    implementation(libs.kotlinx.datetime)
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
