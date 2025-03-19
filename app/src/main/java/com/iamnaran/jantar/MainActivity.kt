@@ -20,7 +20,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            com.iamnaran.designsystem.JantarTheme {
+            JantarTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
 
                     Box(
@@ -41,7 +41,7 @@ class MainActivity : ComponentActivity() {
 @Preview(showBackground = true)
 @Composable
 fun GreetingPreview() {
-    com.iamnaran.designsystem.JantarTheme {
+    JantarTheme {
 
     }
 }
