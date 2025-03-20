@@ -38,9 +38,9 @@ dependencies {
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
 
-    implementation(libs.kotlinx.coroutines.core)
-    implementation(libs.kotlinx.serialization.json)
-    implementation(libs.kotlinx.datetime)
+    api(libs.kotlinx.coroutines.core)
+    api(libs.kotlinx.serialization.json)
+    api(libs.kotlinx.datetime)
 
     implementation(libs.napier)
 

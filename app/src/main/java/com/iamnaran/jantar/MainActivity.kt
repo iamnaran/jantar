@@ -14,6 +14,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.iamnaran.camera.camera.CameraPreviewScreen
 import com.iamnaran.designsystem.JantarTheme
+import com.iamnaran.jantar.navigation.RootNavHost
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,9 +29,7 @@ class MainActivity : ComponentActivity() {
                             .padding(innerPadding)
                             .fillMaxSize()
                     )
-                    CameraPreviewScreen() {
-                        Log.e("Camera Captured", it.previewMediaStatus.name.toString())
-                    }
+                    RootNavHost()
                 }
             }
         }
