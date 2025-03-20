@@ -1,8 +1,12 @@
 package com.iamnaran.designsystem
 
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Camera
+import androidx.compose.material.icons.filled.Cameraswitch
 import androidx.compose.material.icons.filled.Check
 import androidx.compose.material.icons.filled.Email
+import androidx.compose.material.icons.filled.FlashOff
+import androidx.compose.material.icons.filled.FlashOn
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Lock
 import androidx.compose.material.icons.filled.Notifications
@@ -32,6 +36,12 @@ object AppIcons {
     val SettingOutlined = Icons.Outlined.Settings
 
     val Check = Icons.Default.Check
+    val Camera = Icons.Default.Camera
+
+    val FlashOn = Icons.Default.FlashOn
+    val FlashOff = Icons.Default.FlashOff
+
+    val CameraSwitch = Icons.Default.Cameraswitch
 
 
 }

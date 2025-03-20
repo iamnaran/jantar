@@ -10,14 +10,14 @@ import androidx.camera.core.ImageCaptureException
 import androidx.camera.core.Preview
 import androidx.camera.core.SurfaceRequest
 import androidx.camera.lifecycle.ProcessCameraProvider
+import androidx.camera.lifecycle.awaitInstance
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import kotlinx.coroutines.awaitCancellation
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.update
-import kotlinx.coroutines.launch
 import java.io.File
 import java.text.SimpleDateFormat
 import java.util.Locale
@@ -26,39 +26,43 @@ class CameraPreviewViewModel : ViewModel() {
     private val _surfaceRequest = MutableStateFlow<SurfaceRequest?>(null)
     val surfaceRequest: StateFlow<SurfaceRequest?> = _surfaceRequest
 
-    private lateinit var cameraProvider: ProcessCameraProvider
+    private lateinit var processCameraProvider: ProcessCameraProvider
     private var camera: Camera? = null
     private var currentCameraSelector = CameraSelector.DEFAULT_BACK_CAMERA
-    private lateinit var imageCapture: ImageCapture
+    private val imageCapture: ImageCapture by lazy {
+        ImageCapture.Builder().build()
+    }
+    private val cameraPreviewUseCase = Preview.Builder()
+        .build()
+        .apply {
+            setSurfaceProvider { newSurfaceRequest ->
+                _surfaceRequest.update { newSurfaceRequest }
+            }
+        }
 
 
-    fun bindToCamera(context: Context, lifecycleOwner: LifecycleOwner) {
-        viewModelScope.launch {
-            val cameraProviderFuture = ProcessCameraProvider.getInstance(context)
-            cameraProviderFuture.addListener({
-                cameraProvider = cameraProviderFuture.get()
-                val preview = Preview.Builder().build().apply {
-                    setSurfaceProvider { request ->
-                        _surfaceRequest.update { request }
-                    }
-                }
 
-                imageCapture = ImageCapture.Builder()
-                    .setCaptureMode(ImageCapture.CAPTURE_MODE_MINIMIZE_LATENCY)
-                    .build()
+    suspend fun bindToCamera(appContext: Context, lifecycleOwner: LifecycleOwner) {
+        processCameraProvider = ProcessCameraProvider.awaitInstance(appContext)
+        processCameraProvider.unbindAll()
+        processCameraProvider.bindToLifecycle(
+            lifecycleOwner,
+            currentCameraSelector,
+            cameraPreviewUseCase,
+            imageCapture
+        )
 
-                camera = cameraProvider.bindToLifecycle(
-                    lifecycleOwner,
-                    currentCameraSelector,
-                    preview,
-                    imageCapture
-                )
-            }, ContextCompat.getMainExecutor(context))
+        // Cancellation signals we're done with the camera
+        try {
+            awaitCancellation()
+        } finally {
+            processCameraProvider.unbindAll()
         }
     }
 
-    fun toggleCamera(context: Context, lifecycleOwner: LifecycleOwner) {
-        if (!::cameraProvider.isInitialized) return
+
+    suspend fun toggleCamera(context: Context, lifecycleOwner: LifecycleOwner) {
+        if (!::processCameraProvider.isInitialized) return
 
         currentCameraSelector = if (currentCameraSelector == CameraSelector.DEFAULT_BACK_CAMERA) {
             CameraSelector.DEFAULT_FRONT_CAMERA
@@ -66,16 +70,11 @@ class CameraPreviewViewModel : ViewModel() {
             CameraSelector.DEFAULT_BACK_CAMERA
         }
 
-        cameraProvider.unbindAll()
+        processCameraProvider.unbindAll()
         bindToCamera(context, lifecycleOwner)
     }
 
     fun captureImage(context: Context, onImageCaptured: (PreviewMedia) -> Unit) {
-
-        if (!::imageCapture.isInitialized) {
-            onImageCaptured(PreviewMedia("", PreviewMediaStatus.UNKNOWN))
-            return
-        }
 
         val outputDirectory = getOutputDirectory(context)
         val photoFile = File(
@@ -98,7 +97,7 @@ class CameraPreviewViewModel : ViewModel() {
                     onImageCaptured(
                         PreviewMedia(
                             Uri.fromFile(photoFile).toString(),
-                            PreviewMediaStatus.UNKNOWN
+                            PreviewMediaStatus.SUCCESS
                         )
                     )
                 }
@@ -119,7 +118,7 @@ class CameraPreviewViewModel : ViewModel() {
 
     private fun unbindCamera() {
         // Unbind all use cases when stopping the camera
-        cameraProvider.unbindAll()
+        processCameraProvider.unbindAll()
         _surfaceRequest.value = null
     }
 
