@@ -1,10 +1,12 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.kotlin.compose)
+
 }
 
 android {
-    namespace = "com.iamnaran.common"
+    namespace = "com.iamnaran.info"
     compileSdk = 35
 
     defaultConfig {
@@ -30,21 +32,20 @@ android {
     kotlinOptions {
         jvmTarget = "11"
     }
+
+    buildFeatures {
+        compose = true
+    }
+
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.5.0"
+    }
 }
 
 dependencies {
 
-    implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.appcompat)
-    implementation(libs.material)
-
-    api(libs.kotlinx.coroutines.core)
-    api(libs.kotlinx.serialization.json)
-    api(libs.kotlinx.datetime)
-    api(libs.coil.compose)
-    api(libs.coil.svg)
-
-    implementation(libs.napier)
+    implementation(project(":core:designsystem"))
+    implementation(project(":core:common"))
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

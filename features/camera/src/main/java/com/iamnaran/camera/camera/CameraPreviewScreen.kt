@@ -112,7 +112,7 @@ fun CameraPreviewScreen(onImageCaptured: (PreviewMedia) -> Unit) {
         }
 
         PermissionStatus.GRANTED -> {
-            CameraPreviewContent(viewModel, coroutineScope, context, lifecycleOwner)
+            CameraPreviewContent(viewModel, onImageCaptured, coroutineScope, context, lifecycleOwner)
         }
     }
 }
@@ -120,6 +120,7 @@ fun CameraPreviewScreen(onImageCaptured: (PreviewMedia) -> Unit) {
 @Composable
 fun CameraPreviewContent(
     viewModel: CameraPreviewViewModel,
+    onImageCaptured: (PreviewMedia) -> Unit,
     coroutineScope: CoroutineScope,
     context: Activity,
     lifecycleOwner: LifecycleOwner = LocalLifecycleOwner.current
@@ -176,8 +177,7 @@ fun CameraPreviewContent(
                 ) {
                     ShutterButton {
                         viewModel.captureImage(context = context) { data ->
-                            Log.e("CameraPreviewContent: ", data.previewMediaStatus.toString())
-                            Log.e("CameraPreviewContent: ", data.uriString.toString())
+                            onImageCaptured(data)
                         }
                     }
                 }
@@ -191,16 +191,10 @@ fun CameraPreviewContent(
                     FlashToggleButton(isFlashOn) {
                         isFlashOn = it
                     }
-
                 }
-
-
             }
-
         }
-
     }
-
 }
 
 
@@ -216,7 +210,6 @@ fun ShutterButton(onClick: () -> Unit) {
     )
     val buttonColor by remember { mutableStateOf(Color.White) }
     val pressedColor = Color.LightGray
-
 
     Box(
         contentAlignment = Alignment.Center,

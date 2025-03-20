@@ -46,6 +46,7 @@ dependencies {
     implementation(project(":core:designsystem"))
 
     implementation(project(":features:camera"))
+    implementation(project(":features:info"))
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)

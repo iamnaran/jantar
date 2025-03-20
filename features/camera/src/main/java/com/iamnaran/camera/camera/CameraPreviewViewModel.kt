@@ -23,15 +23,18 @@ import java.text.SimpleDateFormat
 import java.util.Locale
 
 class CameraPreviewViewModel : ViewModel() {
+
     private val _surfaceRequest = MutableStateFlow<SurfaceRequest?>(null)
     val surfaceRequest: StateFlow<SurfaceRequest?> = _surfaceRequest
 
     private lateinit var processCameraProvider: ProcessCameraProvider
     private var camera: Camera? = null
+
     private var currentCameraSelector = CameraSelector.DEFAULT_BACK_CAMERA
     private val imageCapture: ImageCapture by lazy {
         ImageCapture.Builder().build()
     }
+
     private val cameraPreviewUseCase = Preview.Builder()
         .build()
         .apply {
@@ -39,8 +42,6 @@ class CameraPreviewViewModel : ViewModel() {
                 _surfaceRequest.update { newSurfaceRequest }
             }
         }
-
-
 
     suspend fun bindToCamera(appContext: Context, lifecycleOwner: LifecycleOwner) {
         processCameraProvider = ProcessCameraProvider.awaitInstance(appContext)
@@ -52,7 +53,6 @@ class CameraPreviewViewModel : ViewModel() {
             imageCapture
         )
 
-        // Cancellation signals we're done with the camera
         try {
             awaitCancellation()
         } finally {

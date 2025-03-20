@@ -4,7 +4,9 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.toRoute
 import com.iamnaran.camera.camera.CameraPreviewScreen
+import com.iamnaran.info.DetailInfoScreen
 
 @Composable
 fun RootNavHost() {
@@ -14,15 +16,13 @@ fun RootNavHost() {
     NavHost(navController, startDestination = CameraPreview) {
         composable<CameraPreview> {
             CameraPreviewScreen {
-
+                navController.navigate(DetailScreen(it.uriString))
             }
         }
 
         composable<DetailScreen> { backStackEntry ->
-//            val home = backStackEntry.toRoute<Home>()
-//            HomeScreen(
-//                bookId = home.userId,
-//            )
+            val detailScreen = backStackEntry.toRoute<DetailScreen>()
+            DetailInfoScreen(capturedImageUri = detailScreen.captureImageUri.toString())
         }
     }
 

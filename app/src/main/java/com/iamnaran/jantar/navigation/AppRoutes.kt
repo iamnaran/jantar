@@ -10,7 +10,7 @@ import kotlinx.serialization.Serializable
 data object CameraPreview
 
 @Serializable
-data class DetailScreen(val userId: String)
+data class DetailScreen(val captureImageUri: String)
 
 
 // Bottom Navigation
