@@ -28,6 +28,12 @@ suspend inline fun <reified T> HttpClient.fetch(
     Result.Error(e)
 }
 
+sealed interface Result<out R> {
+    class Success<out R>(val value: R) : Result<R>
+    data object Loading : Result<Nothing>
+    class Error(val throwable: Throwable) : Result<Nothing>
+}
+
 
 suspend inline fun <reified T> HttpClient.safeRequest(
     callback: HttpRequestBuilder.() -> Unit,

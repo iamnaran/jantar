@@ -20,5 +20,7 @@ sealed class ApiResponse<out T> {
         data class HttpError(val code: Int, val errorBody: Any?) : Error()
         data object NetworkError : Error()
         data object SerializationError : Error()
+        data class NetworkException(val message: String) : Error()
+
     }
 }
