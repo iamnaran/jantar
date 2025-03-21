@@ -38,11 +38,11 @@ dependencies {
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
 
-    implementation(libs.ktor.core)
-    implementation(libs.ktor.android)
-    implementation(libs.ktor.content.negotiation)
-    implementation(libs.ktor.logging)
-    implementation(libs.ktor.serialization.kotlinx)
+    api(libs.ktor.core)
+    api(libs.ktor.android)
+    api(libs.ktor.content.negotiation)
+    api(libs.ktor.logging)
+    api(libs.ktor.serialization.kotlinx)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

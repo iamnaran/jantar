@@ -1,55 +1,50 @@
 package com.iamnaran.jantar.navigation
 
-import androidx.compose.ui.graphics.vector.ImageVector
-import com.iamnaran.designsystem.AppIcons
-import kotlinx.serialization.Contextual
-import kotlinx.serialization.Serializable
-
-
-@Serializable
-data object CameraPreview
-
-@Serializable
-data class DetailScreen(val captureImageUri: String)
-
-
-// Bottom Navigation
-
-@Serializable
-object HomeScreens
-
-@Serializable
-object ProfileScreen
-
-@Serializable
-object ExploreScreen
-
-@Serializable
-sealed class BottomScreens<T>(val name: String, val route: T, @Contextual val icon: ImageVector) {
-
-    @Serializable
-    data object Home :
-        BottomScreens<HomeScreens>(
-            name = "Profile",
-            icon = AppIcons.HomeFilled,
-            route = HomeScreens
-        )
-
-    @Serializable
-    data object Profile : BottomScreens<ProfileScreen>(
-        name = "Profile",
-        icon = AppIcons.ProfileFilled,
-        route = ProfileScreen
-    )
-
-    @Serializable
-    data object Explore : BottomScreens<ExploreScreen>(
-        name = "Job",
-        icon = AppIcons.ProfileFilled,
-        route = ExploreScreen
-    )
-
-}
+//
+//@Serializable
+//data object CameraPreviewRoute
+//
+//@Serializable
+//data class InfoRoute(val captureImageUri: String)
+//
+//
+//// Bottom Navigation
+//
+//@Serializable
+//object HomeRoute
+//
+//@Serializable
+//object ProfileRoute
+//
+//@Serializable
+//object ExploreRoute
+//
+//@Serializable
+//sealed class BottomScreens<T>(val name: String, val route: T, @Contextual val icon: ImageVector) {
+//
+//    @Serializable
+//    data object Home :
+//        BottomScreens<HomeRoute>(
+//            name = "Profile",
+//            icon = AppIcons.HomeFilled,
+//            route = HomeRoute
+//        )
+//
+//    @Serializable
+//    data object Profile : BottomScreens<ProfileRoute>(
+//        name = "Profile",
+//        icon = AppIcons.ProfileFilled,
+//        route = ProfileRoute
+//    )
+//
+//    @Serializable
+//    data object Explore : BottomScreens<ExploreRoute>(
+//        name = "Job",
+//        icon = AppIcons.ExploreFilled,
+//        route = ExploreRoute
+//    )
+//
+//}
 
 
 // sealed class Destinations {

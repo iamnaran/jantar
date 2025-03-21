@@ -1,4 +1,4 @@
-package com.iamnaran.camera.camera
+package com.iamnaran.camera.camera.presentation
 
 import android.content.Context
 import android.net.Uri
@@ -14,6 +14,8 @@ import androidx.camera.lifecycle.awaitInstance
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.ViewModel
+import com.iamnaran.camera.camera.data.PreviewMedia
+import com.iamnaran.camera.camera.data.PreviewMediaStatus
 import kotlinx.coroutines.awaitCancellation
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow

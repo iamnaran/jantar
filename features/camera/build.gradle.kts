@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
+    alias(libs.plugins.kotlin.serialization)
 }
 
 android {
@@ -45,6 +46,12 @@ android {
 dependencies {
 
     implementation(project(":core:designsystem"))
+    implementation(project(":core:network"))
+    implementation(project(":core:common"))
+
+    implementation(libs.koin.core)
+    implementation(libs.koin.android)
+    implementation(libs.koin.compose)
 
     implementation(libs.camerax.core)
     implementation(libs.camerax.camera2)

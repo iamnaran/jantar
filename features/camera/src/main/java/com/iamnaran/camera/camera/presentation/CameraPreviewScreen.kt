@@ -1,9 +1,8 @@
-package com.iamnaran.camera.camera
+package com.iamnaran.camera.camera.presentation
 
 import android.Manifest
 import android.app.Activity
 import android.content.pm.PackageManager
-import android.util.Log
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.camera.compose.CameraXViewfinder
@@ -41,13 +40,15 @@ import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.platform.LocalLifecycleOwner
 import androidx.compose.ui.unit.dp
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.compose.LocalLifecycleOwner
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.iamnaran.camera.camera.data.PermissionStatus
+import com.iamnaran.camera.camera.data.PreviewMedia
 import com.iamnaran.designsystem.AppIcons
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
@@ -112,7 +113,13 @@ fun CameraPreviewScreen(onImageCaptured: (PreviewMedia) -> Unit) {
         }
 
         PermissionStatus.GRANTED -> {
-            CameraPreviewContent(viewModel, onImageCaptured, coroutineScope, context, lifecycleOwner)
+            CameraPreviewContent(
+                viewModel,
+                onImageCaptured,
+                coroutineScope,
+                context,
+                lifecycleOwner
+            )
         }
     }
 }

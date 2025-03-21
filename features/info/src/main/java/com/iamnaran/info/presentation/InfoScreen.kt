@@ -1,4 +1,4 @@
-package com.iamnaran.info
+package com.iamnaran.info.presentation
 
 import android.net.Uri
 import androidx.compose.foundation.Image
@@ -20,7 +20,7 @@ import coil.compose.rememberAsyncImagePainter
 import coil.request.ImageRequest
 
 @Composable
-fun DetailInfoScreen(capturedImageUri: String) {
+fun InfoScreen(capturedImageUri: String) {
     val context = LocalContext.current
 
     val uri = Uri.parse(capturedImageUri)

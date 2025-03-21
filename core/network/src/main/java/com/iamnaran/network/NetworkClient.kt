@@ -15,17 +15,7 @@ import io.ktor.http.headersOf
 import io.ktor.serialization.kotlinx.json.json
 import kotlinx.serialization.json.Json
 
-object NetworkModule {
-
-
-//    val httpModule = module {
-//        single<HttpClient> { provideKtorClient() }
-//    }
-//
-//    val authServices = module {
-//        single { AuthApiService(get()) }
-//    }
-
+object NetworkClient {
 
     private fun provideKtorClient(): HttpClient {
         return HttpClient {
@@ -38,7 +28,6 @@ object NetworkModule {
                 logger = object: io.ktor.client.plugins.logging.Logger {
                     override fun log(message: String) {
                         // AppLog.showLog("HTTP status:" + "${response.status.value}")
-
                     }
 
                 }
