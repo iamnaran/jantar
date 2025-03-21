@@ -34,10 +34,6 @@ android {
 
 dependencies {
 
-    implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.appcompat)
-    implementation(libs.material)
-
     api(libs.kotlinx.coroutines.core)
     api(libs.kotlinx.serialization.json)
     api(libs.kotlinx.datetime)
