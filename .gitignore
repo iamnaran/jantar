@@ -39,6 +39,8 @@ captures/
 # IntelliJ
 *.iml
 .idea/workspace.xml
+.idea/
+.idea
 .idea/tasks.xml
 .idea/gradle.xml
 .idea/assetWizardSettings.xml
@@ -98,4 +100,3 @@ lint/tmp/
 .externalNativeBuild
 .cxx
 local.properties
-.idea
