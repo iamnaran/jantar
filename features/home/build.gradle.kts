@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace = "com.iamnaran.database"
+    namespace = "com.iamnaran.home"
     compileSdk = 35
 
     defaultConfig {
@@ -33,17 +33,16 @@ android {
 }
 
 dependencies {
-
+    
+    implementation(project(":core:designsystem"))
     implementation(project(":core:di"))
     implementation(project(":core:common"))
-
-    implementation(libs.room.runtime)
-    implementation(libs.room.ktx)
-    implementation(libs.room.compiler)
-    implementation(libs.room.paging)
+    implementation(project(":core:network"))
 
     implementation(libs.koin.core)
     implementation(libs.koin.android)
+    implementation(libs.koin.androidx.compose)
+    implementation(libs.koin.androidx.compose.navigation)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

@@ -45,14 +45,18 @@ fun InfoScreen(capturedImageUri: String, onBottomSheetDismiss: () -> Unit) {
         viewModel.processAndFetchInfo(capturedImageUri)
     }
 
-    InfoScreenContent(capturedImageUri, uiState.value){
+    InfoScreenContent(capturedImageUri, uiState.value) {
         onBottomSheetDismiss()
     }
 
 }
 
 @Composable
-fun InfoScreenContent(capturedImageUri: String, uiState: InfoUIState<Info>, onBottomSheetDismiss: () -> Unit) {
+fun InfoScreenContent(
+    capturedImageUri: String,
+    uiState: InfoUIState<Info>,
+    onBottomSheetDismiss: () -> Unit
+) {
 
     val uri = Uri.parse(capturedImageUri)
 
