@@ -1,6 +1,6 @@
 package com.iamnaran.network
 
-import com.iamnaran.common.AppLog
+import com.iamnaran.common.log.AppLog
 import io.ktor.client.HttpClient
 import io.ktor.client.plugins.HttpTimeout
 import io.ktor.client.plugins.cache.HttpCache
@@ -11,8 +11,6 @@ import io.ktor.client.plugins.logging.Logging
 import io.ktor.client.plugins.observer.ResponseObserver
 import io.ktor.http.ContentType
 import io.ktor.http.contentType
-import io.ktor.http.headers
-import io.ktor.http.headersOf
 import io.ktor.serialization.kotlinx.json.json
 import kotlinx.serialization.json.Json
 import org.koin.dsl.module

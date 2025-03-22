@@ -1,4 +1,4 @@
-package com.iamnaran.common
+package com.iamnaran.common.log
 
 import io.github.aakira.napier.DebugAntilog
 import io.github.aakira.napier.Napier

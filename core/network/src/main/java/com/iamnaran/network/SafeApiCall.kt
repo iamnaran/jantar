@@ -1,6 +1,6 @@
 package com.iamnaran.network
 
-import com.iamnaran.common.AppLog
+import com.iamnaran.common.log.AppLog
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
 import io.ktor.client.plugins.ClientRequestException

@@ -22,7 +22,9 @@ fun NavGraphBuilder.infoScreen(
 ) {
     composable<InfoRoute> { backStackEntry ->
         val detailScreen = backStackEntry.toRoute<InfoRoute>()
-        InfoScreen(capturedImageUri = detailScreen.captureImageUri.toString())
+        InfoScreen(capturedImageUri = detailScreen.captureImageUri.toString()){
+            onNavigateBack()
+        }
     }
 }
 

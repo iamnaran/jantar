@@ -18,7 +18,7 @@ fun RootNavHost() {
             navController.navigateToInfoScreen(it.toString())
         }
         infoScreen {
-            navController.popBackStack()
+            navController.navigateUp()
         }
     }
 

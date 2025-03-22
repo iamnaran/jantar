@@ -34,6 +34,11 @@ android {
 
 dependencies {
 
+    implementation(project(":core:di"))
+
+    implementation(libs.koin.core)
+    implementation(libs.koin.android)
+
     api(libs.kotlinx.coroutines.core)
     api(libs.kotlinx.serialization.json)
     api(libs.kotlinx.datetime)

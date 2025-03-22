@@ -20,8 +20,8 @@ val infoModule: Module = module {
             dispatcher = get(named(DispatcherType.IO.name))
         )
     }
-    single<InfoRepository> { InfoRepositoryImpl(get(), get(named(DispatcherType.IO.name)) ) }
+    single<InfoRepository> { InfoRepositoryImpl(get(), get(named(DispatcherType.IO.name))) }
     single<GetInfoUseCase> { GetInfoUseCaseImpl(get()) }
-    viewModel { InfoViewModel(get()) }
+    viewModel { InfoViewModel(get(named(DispatcherType.IO.name)), get(), get()) }
 
 }

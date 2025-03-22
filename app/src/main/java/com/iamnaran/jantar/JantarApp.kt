@@ -1,7 +1,7 @@
 package com.iamnaran.jantar
 
 import androidx.multidex.MultiDexApplication
-import com.iamnaran.common.AppLog
+import com.iamnaran.common.log.AppLog
 import com.iamnaran.jantar.di.appModules
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
