@@ -14,5 +14,5 @@ val databaseModule = module {
         ).fallbackToDestructiveMigration().build()
     }
 
-//    single { get<AppDatabase>().userDao() }
+    single { get<AppDatabase>().productDao() }
 }

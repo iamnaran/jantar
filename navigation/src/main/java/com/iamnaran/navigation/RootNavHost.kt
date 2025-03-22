@@ -1,4 +1,4 @@
-package com.iamnaran.jantar.navigation
+package com.iamnaran.navigation
 
 import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
@@ -14,7 +14,7 @@ fun RootNavHost() {
     val navController = rememberNavController()
 
     NavHost(navController, startDestination = CameraPreviewRoute) {
-        cameraPreviewScreen{
+        cameraPreviewScreen {
             navController.navigateToInfoScreen(it.toString())
         }
         infoScreen {

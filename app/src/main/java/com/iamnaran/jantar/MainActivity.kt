@@ -12,7 +12,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.iamnaran.designsystem.JantarTheme
-import com.iamnaran.jantar.navigation.RootNavHost
+import com.iamnaran.navigation.RootNavHost
 import org.koin.androidx.compose.KoinAndroidContext
 
 class MainActivity : ComponentActivity() {
