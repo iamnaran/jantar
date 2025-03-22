@@ -5,6 +5,7 @@ import com.iamnaran.network.ApiResponse
 import com.iamnaran.network.safeRequestWithFlow
 import io.ktor.client.HttpClient
 import io.ktor.client.request.forms.FormDataContent
+import io.ktor.client.request.setBody
 import io.ktor.client.request.url
 import io.ktor.http.HttpMethod
 import io.ktor.http.Parameters
@@ -23,13 +24,16 @@ class InfoApiServiceImpl(
 ) : InfoApiService {
 
 
-    @OptIn(InternalAPI::class)
     override suspend fun getInfo(imageBase64: String): Flow<ApiResponse<Info>> =
             httpClient.safeRequestWithFlow<Info> {
+                val infoRequest = InfoRequest(image = imageBase64)
                 method = HttpMethod.Post
                 url(ApiEndPoints.SCAN_MEDICINE)
-                body = FormDataContent(Parameters.build {
-                    append("image", imageBase64)
-                })
+                setBody(infoRequest)
             }.flowOn(dispatcher)
+
+
+//    body = FormDataContent(Parameters.build {
+//        append("image", imageBase64)
+//    })
 }

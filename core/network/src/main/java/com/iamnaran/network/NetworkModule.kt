@@ -26,16 +26,12 @@ private fun provideKtorClient(): HttpClient {
         expectSuccess = true
 
         install(Logging) {
-            level = LogLevel.ALL
-        }
-        install(Logging) {
-            logger = object: io.ktor.client.plugins.logging.Logger {
+            logger = object : io.ktor.client.plugins.logging.Logger {
                 override fun log(message: String) {
-                    AppLog.showLog("HTTP status:" + "${message.toString()}")
+                    AppLog.showLog("HTTP status:$message")
                 }
-
             }
-            level = LogLevel.HEADERS
+            level = LogLevel.BODY
         }
 
         install(ContentNegotiation) {
@@ -44,9 +40,6 @@ private fun provideKtorClient(): HttpClient {
                 prettyPrint = true
                 isLenient = true
             })
-            headers {
-                headersOf("Content-Type", "application/json")
-            }
         }
 
         defaultRequest {
@@ -57,14 +50,14 @@ private fun provideKtorClient(): HttpClient {
         install(HttpCache)
 
         install(HttpTimeout) {
-            requestTimeoutMillis = 20000L
-            connectTimeoutMillis = 20000L
-            socketTimeoutMillis = 20000L
+            requestTimeoutMillis = 100000L
+            connectTimeoutMillis = 100000L
+            socketTimeoutMillis = 100000L
         }
 
         install(ResponseObserver) {
-            onResponse { response ->
-//                    AppLog.showLog("HTTP status:" + "${response.status.value}")
+            onResponse {
+                AppLog.showLog("HTTP status:" + "${it.status.value}")
             }
         }
     }
