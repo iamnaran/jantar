@@ -9,6 +9,7 @@ This Android project is built using Jetpack Compose for the UI, Koin for depende
 - **Google Gemini API**: Uses Google Gemini API to analyze the image and return relevant details about the medicine.
 - **Jetpack Compose UI**: Provides a clean and modern UI built with Jetpack Compose for a seamless experience.
 
+
 ### Features
 
 - **Jetpack Compose UI**: 
