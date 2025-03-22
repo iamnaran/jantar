@@ -44,12 +44,17 @@ dependencies {
     implementation(project(":core:di"))
     implementation(project(":core:common"))
     implementation(project(":core:designsystem"))
+    implementation(project(":core:network"))
+    implementation(project(":core:database"))
 
     implementation(project(":features:camera"))
     implementation(project(":features:info"))
 
     implementation(libs.multidex)
 
+    implementation(libs.koin.core)
+    implementation(libs.koin.android)
+    implementation(libs.koin.androidx.compose)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

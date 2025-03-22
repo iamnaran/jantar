@@ -13,6 +13,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.iamnaran.designsystem.JantarTheme
 import com.iamnaran.jantar.navigation.RootNavHost
+import org.koin.androidx.compose.KoinAndroidContext
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -21,13 +22,15 @@ class MainActivity : ComponentActivity() {
         setContent {
             JantarTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-
                     Box(
                         modifier = Modifier
                             .padding(innerPadding)
                             .fillMaxSize()
-                    )
-                    RootNavHost()
+                    ) {
+                        KoinAndroidContext {
+                            RootNavHost()
+                        }
+                    }
                 }
             }
         }

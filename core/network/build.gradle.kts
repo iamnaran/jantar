@@ -43,6 +43,9 @@ dependencies {
     api(libs.ktor.logging)
     api(libs.ktor.serialization.kotlinx)
 
+    implementation(libs.koin.core)
+    implementation(libs.koin.android)
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
