@@ -13,11 +13,13 @@ import androidx.compose.material.icons.filled.Lock
 import androidx.compose.material.icons.filled.Notifications
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.Settings
+import androidx.compose.material.icons.outlined.CameraAlt
 import androidx.compose.material.icons.outlined.Explore
 import androidx.compose.material.icons.outlined.Home
 import androidx.compose.material.icons.outlined.Menu
 import androidx.compose.material.icons.outlined.Notifications
 import androidx.compose.material.icons.outlined.Person
+import androidx.compose.material.icons.outlined.PersonOutline
 import androidx.compose.material.icons.outlined.Settings
 
 object AppIcons {
@@ -36,12 +38,15 @@ object AppIcons {
     val ExploreFilled = Icons.Filled.Explore
 
     val Menu = Icons.Outlined.Menu
+    val Person = Icons.Outlined.PersonOutline
+
+    val Camera = Icons.Outlined.CameraAlt
 
     val SettingFilled = Icons.Filled.Settings
     val SettingOutlined = Icons.Outlined.Settings
 
     val Check = Icons.Default.Check
-    val Camera = Icons.Default.Camera
+    val CameraShutter = Icons.Default.Camera
 
     val FlashOn = Icons.Default.FlashOn
     val FlashOff = Icons.Default.FlashOff

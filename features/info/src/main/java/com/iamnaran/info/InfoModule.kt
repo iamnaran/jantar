@@ -8,8 +8,8 @@ import com.iamnaran.info.data.InfoRepositoryImpl
 import com.iamnaran.info.domain.GetInfoUseCase
 import com.iamnaran.info.domain.GetInfoUseCaseImpl
 import com.iamnaran.info.presentation.InfoViewModel
+import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.module.Module
-import org.koin.core.module.dsl.viewModel
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
 

@@ -14,23 +14,18 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.iamnaran.designsystem.JantarTheme
 import com.iamnaran.navigation.RootNavHost
 import org.koin.androidx.compose.KoinAndroidContext
+import org.koin.core.annotation.KoinExperimentalAPI
 
 class MainActivity : ComponentActivity() {
+
+    @OptIn(KoinExperimentalAPI::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
             JantarTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Box(
-                        modifier = Modifier
-                            .padding(innerPadding)
-                            .fillMaxSize()
-                    ) {
-                        KoinAndroidContext {
-                            RootNavHost()
-                        }
-                    }
+                KoinAndroidContext {
+                    RootNavHost()
                 }
             }
         }

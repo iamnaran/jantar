@@ -6,7 +6,7 @@ plugins {
 }
 
 android {
-    namespace = "com.iamnaran.auth"
+    namespace = "com.iamnaran.explore"
     compileSdk = 35
 
     defaultConfig {
@@ -32,7 +32,6 @@ android {
     kotlinOptions {
         jvmTarget = "11"
     }
-
     buildFeatures {
         compose = true
     }
@@ -40,6 +39,7 @@ android {
     composeOptions {
         kotlinCompilerExtensionVersion = "1.5.0"
     }
+
 }
 
 dependencies {

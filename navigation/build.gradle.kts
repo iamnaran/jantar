@@ -44,16 +44,14 @@ android {
 
 dependencies {
 
-    implementation(project(":core:common"))
     implementation(project(":core:designsystem"))
+    implementation(project(":core:di"))
+    implementation(project(":core:common"))
 
     implementation(project(":features:camera"))
     implementation(project(":features:info"))
+    implementation(project(":features:home"))
+    implementation(project(":features:explore"))
 
-    implementation(libs.koin.androidx.compose)
-    implementation(libs.koin.androidx.compose.navigation)
 
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
 }

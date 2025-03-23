@@ -242,7 +242,7 @@ fun ShutterButton(onClick: () -> Unit) {
                 }
         ) {
             Icon(
-                imageVector = AppIcons.Camera,
+                imageVector = AppIcons.CameraShutter,
                 contentDescription = "Camera",
                 modifier = Modifier.size(32.dp)
             )

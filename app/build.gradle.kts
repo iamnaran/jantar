@@ -42,14 +42,12 @@ android {
 
 dependencies {
     implementation(project(":core:di"))
-    implementation(project(":core:common"))
     implementation(project(":core:designsystem"))
     implementation(project(":core:network"))
-    implementation(project(":core:database"))
-    implementation(project(":navigation"))
+//    implementation(project(":core:database"))
+    implementation(project(":core:common"))
 
-    implementation(project(":features:camera"))
-    implementation(project(":features:info"))
+    implementation(project(":navigation"))
 
     implementation(libs.multidex)
 
