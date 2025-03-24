@@ -6,7 +6,7 @@ plugins {
 }
 
 android {
-    namespace = "com.iamnaran.navigation"
+    namespace = "com.iamnaran.main"
     compileSdk = 35
 
     defaultConfig {
@@ -45,13 +45,8 @@ android {
 dependencies {
 
     implementation(project(":core:common"))
+    implementation(project(":core:network"))
     implementation(project(":core:designsystem"))
 
-    implementation(project(":features:auth"))
-    implementation(project(":features:camera"))
-    implementation(project(":features:info"))
-    implementation(project(":features:home"))
-    implementation(project(":features:explore"))
-
-
+    implementation(project(":navigation"))
 }

@@ -8,7 +8,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.iamnaran.designsystem.theme.JantarTheme
-import com.iamnaran.navigation.RootNavHost
+import com.iamnaran.main.presentation.MainScreen
 import org.koin.androidx.compose.KoinAndroidContext
 import org.koin.core.annotation.KoinExperimentalAPI
 
@@ -22,7 +22,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             JantarTheme {
                 KoinAndroidContext {
-                    RootNavHost()
+                    MainScreen()
                 }
             }
         }

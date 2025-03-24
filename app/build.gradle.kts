@@ -47,7 +47,7 @@ dependencies {
     implementation(project(":core:network"))
 //    implementation(project(":core:database"))
 
-    implementation(project(":navigation"))
+    implementation(project(":features:main"))
 
     implementation(libs.multidex)
 

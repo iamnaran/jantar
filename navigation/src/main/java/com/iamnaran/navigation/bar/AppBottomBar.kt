@@ -1,4 +1,4 @@
-package com.iamnaran.navigation.nav
+package com.iamnaran.navigation.bar
 
 import androidx.compose.material3.Badge
 import androidx.compose.material3.BadgedBox
@@ -9,43 +9,20 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
-import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.navigation.NavController
 import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.compose.currentBackStackEntryAsState
-import com.iamnaran.designsystem.theme.AppIcons
-import com.iamnaran.explore.navigation.ExploreRoute
-import com.iamnaran.home.navigation.HomeRoute
-import kotlinx.serialization.Contextual
-import kotlinx.serialization.Serializable
-
-@Serializable
-sealed class BottomScreens<T>(
-    val name: String,
-    val route: T,
-    @Contextual val selectedIcon: ImageVector? = null,
-    @Contextual val unSelectedIcon: ImageVector? = null,
-) {
-    data object Home : BottomScreens<HomeRoute>(
-        "Home", HomeRoute,
-        AppIcons.HomeFilled, AppIcons.HomeOutlined
-    )
-
-    data object Explore : BottomScreens<ExploreRoute>(
-        "Explore", ExploreRoute,
-        AppIcons.ExploreFilled, AppIcons.ExploreOutlined
-    )
-}
+import com.iamnaran.navigation.BottomNavScreens
 
 
 @Composable
 fun AppBottomNavigation(navController: NavController) {
 
-    val bottomScreens = remember {
+    val bottomNavScreens = remember {
         listOf(
-            BottomScreens.Home,
-            BottomScreens.Explore,
+            BottomNavScreens.Home,
+            BottomNavScreens.Explore,
         )
     }
 
@@ -54,7 +31,7 @@ fun AppBottomNavigation(navController: NavController) {
         val navBackStackEntry by navController.currentBackStackEntryAsState()
         val currentDestination = navBackStackEntry?.destination
 
-        bottomScreens.forEach { screen ->
+        bottomNavScreens.forEach { screen ->
             val isSelected = currentDestination?.hierarchy?.any { it.route == screen.route::class.qualifiedName } == true
             NavigationBarItem(
                 selected = isSelected,
