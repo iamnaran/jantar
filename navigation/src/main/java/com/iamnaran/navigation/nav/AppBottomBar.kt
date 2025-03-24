@@ -14,7 +14,7 @@ import androidx.navigation.NavController
 import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.compose.currentBackStackEntryAsState
-import com.iamnaran.designsystem.AppIcons
+import com.iamnaran.designsystem.theme.AppIcons
 import com.iamnaran.explore.navigation.ExploreRoute
 import com.iamnaran.home.navigation.HomeRoute
 import kotlinx.serialization.Contextual

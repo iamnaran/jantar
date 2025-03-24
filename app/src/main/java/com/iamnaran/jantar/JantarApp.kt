@@ -34,7 +34,7 @@ class JantarApp : MultiDexApplication() {
      */
     private fun setStrictModePolicy() {
         if (isDebuggable()) {
-            enableStrictMode()
+//            enableStrictMode()
         }
     }
 

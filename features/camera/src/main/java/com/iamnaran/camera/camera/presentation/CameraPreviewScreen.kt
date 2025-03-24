@@ -49,7 +49,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.iamnaran.camera.camera.data.PermissionStatus
 import com.iamnaran.camera.camera.data.PreviewMedia
-import com.iamnaran.designsystem.AppIcons
+import com.iamnaran.designsystem.theme.AppIcons
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 

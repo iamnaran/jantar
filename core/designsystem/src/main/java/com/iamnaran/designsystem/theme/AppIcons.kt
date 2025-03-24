@@ -1,4 +1,4 @@
-package com.iamnaran.designsystem
+package com.iamnaran.designsystem.theme
 
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Camera
