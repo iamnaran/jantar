@@ -34,16 +34,16 @@ android {
 
 dependencies {
 
-    implementation(project(":core:di"))
-
-    implementation(libs.koin.core)
-    implementation(libs.koin.android)
-
     api(libs.kotlinx.coroutines.core)
     api(libs.kotlinx.serialization.json)
     api(libs.kotlinx.datetime)
     api(libs.coil.compose)
     api(libs.coil.svg)
+
+    api(libs.koin.core)
+    api(libs.koin.android)
+    api(libs.koin.androidx.compose)
+    api(libs.koin.androidx.compose.navigation)
 
     implementation(libs.napier)
 

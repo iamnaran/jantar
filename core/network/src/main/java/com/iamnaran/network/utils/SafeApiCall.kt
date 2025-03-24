@@ -1,6 +1,5 @@
-package com.iamnaran.network
+package com.iamnaran.network.utils
 
-import com.iamnaran.common.log.AppLog
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
 import io.ktor.client.plugins.ClientRequestException
@@ -59,16 +58,12 @@ inline fun <reified T> HttpClient.safeRequestWithFlow(
         val response = request { callback() }
         emit(ApiResponse.Success(response.body()))
     } catch (e: ClientRequestException) {
-        AppLog.showLog("ClientRequestException")
         emit(ApiResponse.Error.HttpError(e.response.status.value, e.errorBody()))
     } catch (e: ServerResponseException) {
-        AppLog.showLog("ServerResponseException")
         emit(ApiResponse.Error.HttpError(e.response.status.value, e.errorBody()))
     } catch (e: IOException) {
-        AppLog.showLog("IOException")
         emit(ApiResponse.Error.NetworkError)
     } catch (e: SerializationException) {
-        AppLog.showLog("SerializationException")
         emit(ApiResponse.Error.SerializationError)
     }
 }
@@ -82,16 +77,12 @@ inline fun <reified T> HttpClient.submitFormFlow(formParameters: Parameters = Pa
         response
         emit(ApiResponse.Success(response.body()))
     } catch (e: ClientRequestException) {
-        AppLog.showLog("ClientRequestException")
         emit(ApiResponse.Error.HttpError(e.response.status.value, e.errorBody()))
     } catch (e: ServerResponseException) {
-        AppLog.showLog("ServerResponseException")
         emit(ApiResponse.Error.HttpError(e.response.status.value, e.errorBody()))
     } catch (e: IOException) {
-        AppLog.showLog("IOException")
         emit(ApiResponse.Error.NetworkError)
     } catch (e: SerializationException) {
-        AppLog.showLog("SerializationException")
         emit(ApiResponse.Error.SerializationError)
     }
 }

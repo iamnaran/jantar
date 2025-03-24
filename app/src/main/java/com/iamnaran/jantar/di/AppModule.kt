@@ -1,11 +1,11 @@
 package com.iamnaran.jantar.di
 
 import com.iamnaran.common.commonModule
-import com.iamnaran.di.dispatcherModule
-import com.iamnaran.network.httpModule
+import com.iamnaran.navigation.navigationModule
+import com.iamnaran.network.networkModule
 
 val appModules = listOf(
-    dispatcherModule,
     commonModule,
-    httpModule,
+    networkModule,
+    navigationModule
 )

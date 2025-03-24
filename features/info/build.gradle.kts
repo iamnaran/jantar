@@ -44,16 +44,9 @@ android {
 
 dependencies {
 
-    implementation(project(":core:designsystem"))
-    implementation(project(":core:di"))
     implementation(project(":core:common"))
     implementation(project(":core:network"))
-
-    implementation(libs.koin.core)
-    implementation(libs.koin.android)
-    implementation(libs.koin.androidx.compose)
-    implementation(libs.koin.androidx.compose.navigation)
-
+    implementation(project(":core:designsystem"))
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

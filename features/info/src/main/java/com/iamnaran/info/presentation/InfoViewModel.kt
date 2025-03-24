@@ -1,6 +1,5 @@
 package com.iamnaran.info.presentation
 
-import android.content.Context
 import android.net.Uri
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -8,7 +7,7 @@ import com.iamnaran.common.log.AppLog
 import com.iamnaran.common.utils.ImageUtils
 import com.iamnaran.info.data.Info
 import com.iamnaran.info.domain.GetInfoUseCase
-import com.iamnaran.network.ApiResponse
+import com.iamnaran.network.utils.ApiResponse
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow

@@ -2,7 +2,7 @@ package com.iamnaran.info.domain
 
 import com.iamnaran.info.data.Info
 import com.iamnaran.info.data.InfoRepository
-import com.iamnaran.network.ApiResponse
+import com.iamnaran.network.utils.ApiResponse
 import kotlinx.coroutines.flow.Flow
 
 interface GetInfoUseCase {

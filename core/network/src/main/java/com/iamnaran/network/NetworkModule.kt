@@ -1,6 +1,6 @@
 package com.iamnaran.network
 
-import com.iamnaran.common.log.AppLog
+import android.util.Log
 import io.ktor.client.HttpClient
 import io.ktor.client.plugins.HttpTimeout
 import io.ktor.client.plugins.cache.HttpCache
@@ -15,18 +15,18 @@ import io.ktor.serialization.kotlinx.json.json
 import kotlinx.serialization.json.Json
 import org.koin.dsl.module
 
-val httpModule = module {
+val networkModule = module {
     single<HttpClient> { provideKtorClient() }
 }
 
-private fun provideKtorClient(): HttpClient {
+fun provideKtorClient(): HttpClient {
+
     return HttpClient {
         expectSuccess = true
-
         install(Logging) {
             logger = object : io.ktor.client.plugins.logging.Logger {
                 override fun log(message: String) {
-                    AppLog.showLog("HTTP status:$message")
+                    Log.e("Network Module HTTP status", message)
                 }
             }
             level = LogLevel.BODY
@@ -55,9 +55,12 @@ private fun provideKtorClient(): HttpClient {
 
         install(ResponseObserver) {
             onResponse {
-                AppLog.showLog("HTTP status:" + "${it.status.value}")
+                Log.e("Network Module HTTP status", "${it.status.value}")
             }
         }
     }
 }
+
+
+
 

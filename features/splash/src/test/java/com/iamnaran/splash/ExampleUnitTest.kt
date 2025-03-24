@@ -1,4 +1,4 @@
-package com.iamnaran.di
+package com.iamnaran.splash
 
 import org.junit.Test
 

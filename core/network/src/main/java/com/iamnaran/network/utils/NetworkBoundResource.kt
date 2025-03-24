@@ -1,4 +1,4 @@
-package com.iamnaran.network
+package com.iamnaran.network.utils
 
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.emitAll

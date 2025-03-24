@@ -1,6 +1,6 @@
 package com.iamnaran.info.data
 
-import com.iamnaran.network.ApiResponse
+import com.iamnaran.network.utils.ApiResponse
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flowOn

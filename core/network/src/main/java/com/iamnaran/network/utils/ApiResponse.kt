@@ -1,4 +1,4 @@
-package com.iamnaran.network
+package com.iamnaran.network.utils
 
 sealed class ApiResponseWithError<out T, out E> {
 

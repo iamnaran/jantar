@@ -34,7 +34,6 @@ android {
 
 dependencies {
 
-    implementation(project(":core:di"))
     implementation(project(":core:common"))
 
     implementation(libs.room.runtime)
@@ -42,7 +41,8 @@ dependencies {
     implementation(libs.room.compiler)
     implementation(libs.room.paging)
 
-    implementation(libs.koin.core)
-    implementation(libs.koin.android)
+    implementation(libs.kotlinx.coroutines.core)
+    implementation(libs.kotlinx.serialization.json)
+    implementation(libs.kotlinx.datetime)
 
 }

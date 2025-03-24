@@ -44,9 +44,8 @@ android {
 
 dependencies {
 
-    implementation(project(":core:designsystem"))
-    implementation(project(":core:di"))
     implementation(project(":core:common"))
+    implementation(project(":core:designsystem"))
 
     implementation(project(":features:camera"))
     implementation(project(":features:info"))

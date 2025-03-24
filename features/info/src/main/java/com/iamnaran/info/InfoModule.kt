@@ -1,6 +1,6 @@
 package com.iamnaran.info
 
-import com.iamnaran.di.DispatcherType
+import com.iamnaran.common.dispatcher.DispatcherType
 import com.iamnaran.info.data.InfoApiService
 import com.iamnaran.info.data.InfoApiServiceImpl
 import com.iamnaran.info.data.InfoRepository
