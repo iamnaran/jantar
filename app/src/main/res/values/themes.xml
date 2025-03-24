@@ -2,4 +2,10 @@
 <resources>
 
     <style name="Theme.Jantar" parent="android:Theme.Material.Light.NoActionBar" />
+
+    <style name="Theme.Jantar.Splash" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenAnimatedIcon">@drawable/ic_launcher_foreground</item>
+        <item name="postSplashScreenTheme">@style/Theme.Jantar</item>
+    </style>
+
 </resources>

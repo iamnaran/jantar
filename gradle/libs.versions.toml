@@ -21,7 +21,7 @@ kotlinxCoroutinesCore = "1.10.1"
 kotlinxSerializationJson = "1.8.0"
 
 koin = "3.5.3"
-koin-compose = "1.1.2"
+splashScreen = "1.0.1"
 
 napier = "2.7.1"
 navigation = "2.8.9"
@@ -86,6 +86,8 @@ napier = { module = "io.github.aakira:napier", version.ref = "napier" }
 
 navigation-compose = { module = "androidx.navigation:navigation-compose", version.ref = "navigation" }
 multidex = { module = "androidx.multidex:multidex", version.ref = "multidex" }
+
+splash-screen = { module = "androidx.core:core-splashscreen", version.ref = "splashScreen" }
 
 material-icons-extended = { module = "androidx.compose.material:material-icons-extended", version.ref = "materialIcons" }
 
