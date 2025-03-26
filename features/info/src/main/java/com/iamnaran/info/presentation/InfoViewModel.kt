@@ -43,7 +43,7 @@ class InfoViewModel(
     }
 
 
-    fun fetchInfo(base64Image: String) {
+    private fun fetchInfo(base64Image: String) {
         viewModelScope.launch {
             _uiState.value = InfoUIState.Loading
             getInfoUseCase.execute(base64Image)

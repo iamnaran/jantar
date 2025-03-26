@@ -14,11 +14,15 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
+import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
-import com.iamnaran.navigation.BottomNavScreens
-import com.iamnaran.navigation.RootNavHost
+import com.iamnaran.navigation.NavScreen
+import com.iamnaran.navigation.nav.RootNavHost
 import com.iamnaran.navigation.bar.AppBottomNavigation
+import com.iamnaran.navigation.nav.AuthGraphRoute
+import com.iamnaran.navigation.nav.LoginRoute
+import com.iamnaran.navigation.nav.RegisterRoute
 
 @Composable
 @OptIn(ExperimentalMaterial3Api::class)
@@ -33,23 +37,40 @@ fun MainScreen() {
     val showBottomBarState = rememberSaveable { (mutableStateOf(false)) }
     val showTopBarState = rememberSaveable { (mutableStateOf(false)) }
 
-    val currentScreen = remember { mutableStateOf(BottomNavScreens.Home.route) }
     val rootNavBackStackEntry by navController.currentBackStackEntryAsState()
     val coroutineScope = rememberCoroutineScope()
 
 
+
     when (rootNavBackStackEntry?.destination?.route) {
-        BottomNavScreens.Home.route.toString() -> {
-            showBottomBarState.value = true
-            showTopBarState.value = true
-            topAppbarTitle.value = BottomNavScreens.Home.name
+
+        AuthGraphRoute::class.qualifiedName -> {
+            showBottomBarState.value = false
+            showTopBarState.value = false
 
         }
 
-        BottomNavScreens.Explore.route.toString() -> {
+        LoginRoute::class.qualifiedName -> {
+            showBottomBarState.value = false
+            showTopBarState.value = false
+        }
+
+        RegisterRoute::class.qualifiedName -> {
+            showBottomBarState.value = false
+            showTopBarState.value = false
+        }
+
+        NavScreen.Home.route::class.qualifiedName -> {
             showBottomBarState.value = true
             showTopBarState.value = true
-            topAppbarTitle.value = BottomNavScreens.Explore.name
+            topAppbarTitle.value = NavScreen.Home.name
+
+        }
+
+        NavScreen.Explore.route::class.qualifiedName -> {
+            showBottomBarState.value = true
+            showTopBarState.value = true
+            topAppbarTitle.value = NavScreen.Explore.name
         }
 
         else -> {
@@ -64,16 +85,17 @@ fun MainScreen() {
 //            AppTopBar("Jantar", barScrollBehavior, onActionCameraClick = {
 //                navController.navigateToCameraPreviewScreen()
 //            }){
-//                // todo profile click
 //            }
         },
         bottomBar = {
-            AppBottomNavigation(navController = navController)
+            if (showBottomBarState.value){
+                AppBottomNavigation(navController = navController)
+            }
         }
     ) { paddingValues ->
         Box(
             modifier = Modifier
-                .padding(paddingValues)
+                .padding(paddingValues).fillMaxSize()
         ) {
             RootNavHost(navController)
         }

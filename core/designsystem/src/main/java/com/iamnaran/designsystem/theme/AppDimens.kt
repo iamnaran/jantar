@@ -8,6 +8,9 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 
 data class Dimens(
+    val oneDim: Dp = 1.dp,
+    val zeroDim: Dp = 0.dp,
+
     val extraSmall: Dp = 2.dp,
     val default: Dp = 4.dp,
     val normal: Dp = 8.dp,
@@ -21,6 +24,16 @@ data class Dimens(
     val paddingMedium: Dp = 10.dp,
     val paddingLarge: Dp = 16.dp,
     val paddingExtraLarge: Dp = 32.dp,
+
+
+    val sizeSmall: Dp = 2.dp,
+    val sizeDefault: Dp = 4.dp,
+    val sizeNormal: Dp = 8.dp,
+    val sizeMedium: Dp = 10.dp,
+    val sizeLarge: Dp = 16.dp,
+    val sizeExtraLarge: Dp = 32.dp,
+    val sizeButton: Dp = 50.dp,
+    val sizeIcon: Dp = 50.dp,
 
     )
 

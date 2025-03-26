@@ -13,6 +13,8 @@ import androidx.compose.material.icons.filled.Lock
 import androidx.compose.material.icons.filled.Notifications
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.Settings
+import androidx.compose.material.icons.filled.Visibility
+import androidx.compose.material.icons.filled.VisibilityOff
 import androidx.compose.material.icons.outlined.CameraAlt
 import androidx.compose.material.icons.outlined.Explore
 import androidx.compose.material.icons.outlined.Home
@@ -26,6 +28,12 @@ object AppIcons {
     // Material Icons
     val Email = Icons.Default.Email
     val Password = Icons.Default.Lock
+
+    val Facebook = Icons.Default.Lock
+    val Google = Icons.Default.Lock
+
+    val PasswordVisibility = Icons.Default.Visibility
+    val PasswordVisibilityOff = Icons.Default.VisibilityOff
 
     val HomeFilled = Icons.Filled.Home
     val HomeOutlined = Icons.Outlined.Home

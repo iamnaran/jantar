@@ -13,25 +13,24 @@ import androidx.navigation.NavController
 import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.compose.currentBackStackEntryAsState
-import com.iamnaran.navigation.BottomNavScreens
+import com.iamnaran.navigation.NavScreen
 
 
 @Composable
 fun AppBottomNavigation(navController: NavController) {
 
-    val bottomNavScreens = remember {
+    val navScreens = remember {
         listOf(
-            BottomNavScreens.Home,
-            BottomNavScreens.Explore,
+            NavScreen.Home,
+            NavScreen.Explore,
         )
     }
-
     NavigationBar {
 
         val navBackStackEntry by navController.currentBackStackEntryAsState()
         val currentDestination = navBackStackEntry?.destination
 
-        bottomNavScreens.forEach { screen ->
+        navScreens.forEach { screen ->
             val isSelected = currentDestination?.hierarchy?.any { it.route == screen.route::class.qualifiedName } == true
             NavigationBarItem(
                 selected = isSelected,

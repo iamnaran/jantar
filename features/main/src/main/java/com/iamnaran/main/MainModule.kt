@@ -1,5 +1,6 @@
 package com.iamnaran.main
 
-class MainModule {
 
-}
+import com.iamnaran.navigation.di.featureModules
+
+val mainModules = featureModules

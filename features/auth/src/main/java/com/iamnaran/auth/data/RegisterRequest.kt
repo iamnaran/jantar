@@ -1,6 +1,6 @@
 package com.iamnaran.auth.data
 
-data class LoginRequest(
+data class RegisterRequest(
     val username: String,
     val password: String,
 )

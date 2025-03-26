@@ -1,4 +1,4 @@
-package com.iamnaran.navigation.graphs
+package com.iamnaran.navigation.nav
 
 import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
@@ -19,26 +19,29 @@ data object HomeRoute
 data object ExploreRoute
 
 fun NavGraphBuilder.mainNavigationGraph() {
-
     navigation<MainGraphRoute>(startDestination = HomeRoute) {
         composable<HomeRoute> {
             HomeScreen() {
-
             }
         }
-
         composable<ExploreRoute> {
             ExploreScreen() {
-
             }
         }
-
     }
 }
 
 
 fun NavController.navigateToMainGraphRoute(navOptions: NavOptions? = null) {
-    navigate(MainGraphRoute, navOptions)
+    navigate(MainGraphRoute) {
+        popUpTo(AuthGraphRoute) {
+            inclusive = true
+        }
+        launchSingleTop = true
+        navOptions?.let {
+
+        }
+    }
 }
 
 fun NavController.navigateToHomeRoute(navOptions: NavOptions? = null) {

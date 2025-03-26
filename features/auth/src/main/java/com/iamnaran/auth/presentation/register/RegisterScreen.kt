@@ -1,4 +1,4 @@
-package com.iamnaran.auth.presentation
+package com.iamnaran.auth.presentation.register
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
@@ -10,10 +10,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
-import com.iamnaran.designsystem.R.drawable
+import com.iamnaran.designsystem.R.*
 
 @Composable
-fun LoginScreen(onLoginSuccess: () -> Unit) {
+fun RegisterScreen(onRegisterSuccess: () -> Unit, onNavigateBack: () -> Unit) {
 
     Column(modifier = Modifier.fillMaxSize()) {
 
@@ -32,7 +32,7 @@ fun LoginScreen(onLoginSuccess: () -> Unit) {
             Column {
 
 
-                Button(onClick = onLoginSuccess) {
+                Button(onClick = onRegisterSuccess) {
                     Text(text = "Login")
                 }
 

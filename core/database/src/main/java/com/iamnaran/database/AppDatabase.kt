@@ -8,7 +8,7 @@ import com.iamnaran.database.entity.ProductEntity
 
 
 @Database(entities = [ProductEntity::class], version = 7, exportSchema = false)
-@TypeConverters(AppTypeConvertor::class)
+@TypeConverters(InstantTypeConvertor::class)
 abstract class AppDatabase : RoomDatabase() {
 
     abstract fun productDao(): ProductDao

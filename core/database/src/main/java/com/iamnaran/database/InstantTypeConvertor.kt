@@ -3,7 +3,7 @@ package com.iamnaran.database
 import androidx.room.TypeConverter
 import kotlinx.serialization.json.Json
 
-class AppTypeConvertor {
+class InstantTypeConvertor {
 
     @TypeConverter
     fun fromString(value: String): List<String> {
