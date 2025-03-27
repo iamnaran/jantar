@@ -23,6 +23,7 @@ fun NavGraphBuilder.authNavigationGraph(onNavigateToMain: () -> Unit){
             LoginScreen(navigateToMain = {
                 onNavigateToMain()
             }) {
+
             }
         }
         composable<RegisterRoute> {

@@ -8,26 +8,29 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.rememberTopAppBarState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
-import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
-import com.iamnaran.navigation.NavScreen
-import com.iamnaran.navigation.nav.RootNavHost
+import com.iamnaran.navigation.NavDestinationScreen
 import com.iamnaran.navigation.bar.AppBottomNavigation
 import com.iamnaran.navigation.nav.AuthGraphRoute
 import com.iamnaran.navigation.nav.LoginRoute
 import com.iamnaran.navigation.nav.RegisterRoute
+import com.iamnaran.navigation.nav.RootNavHost
+import org.koin.androidx.compose.koinViewModel
 
 @Composable
 @OptIn(ExperimentalMaterial3Api::class)
 
-fun MainScreen() {
+fun MainScreen(isLoggedIn: Boolean) {
+
+    val viewModel: MainViewModel = koinViewModel()
 
     val navController = rememberNavController()
     val topAppbarTitle = remember { mutableStateOf("") }
@@ -39,7 +42,6 @@ fun MainScreen() {
 
     val rootNavBackStackEntry by navController.currentBackStackEntryAsState()
     val coroutineScope = rememberCoroutineScope()
-
 
 
     when (rootNavBackStackEntry?.destination?.route) {
@@ -60,17 +62,17 @@ fun MainScreen() {
             showTopBarState.value = false
         }
 
-        NavScreen.Home.route::class.qualifiedName -> {
+        NavDestinationScreen.Home.route::class.qualifiedName -> {
             showBottomBarState.value = true
             showTopBarState.value = true
-            topAppbarTitle.value = NavScreen.Home.name
+            topAppbarTitle.value = NavDestinationScreen.Home.name
 
         }
 
-        NavScreen.Explore.route::class.qualifiedName -> {
+        NavDestinationScreen.Explore.route::class.qualifiedName -> {
             showBottomBarState.value = true
             showTopBarState.value = true
-            topAppbarTitle.value = NavScreen.Explore.name
+            topAppbarTitle.value = NavDestinationScreen.Explore.name
         }
 
         else -> {
@@ -88,16 +90,17 @@ fun MainScreen() {
 //            }
         },
         bottomBar = {
-            if (showBottomBarState.value){
+            if (showBottomBarState.value) {
                 AppBottomNavigation(navController = navController)
             }
         }
     ) { paddingValues ->
         Box(
             modifier = Modifier
-                .padding(paddingValues).fillMaxSize()
+                .padding(paddingValues)
+                .fillMaxSize()
         ) {
-            RootNavHost(navController)
+            RootNavHost(isLoggedIn = isLoggedIn, navController)
         }
     }
 

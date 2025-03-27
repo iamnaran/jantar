@@ -22,6 +22,6 @@ val authModule: Module = module {
     }
     single<AuthRepository> { AuthRepositoryImpl(get(), get(named(DispatcherType.IO.name))) }
     single<LoginUseCase> { LoginUseCaseImpl(get()) }
-    viewModel { LoginViewModel(get()) }
+    viewModel { LoginViewModel(get(),get()) }
 
 }

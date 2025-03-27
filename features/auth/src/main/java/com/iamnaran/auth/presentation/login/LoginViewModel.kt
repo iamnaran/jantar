@@ -2,7 +2,9 @@ package com.iamnaran.auth.presentation.login
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.iamnaran.auth.data.UserResponse
 import com.iamnaran.auth.domain.LoginUseCase
+import com.iamnaran.common.data.PrefDataStoreHelper
 import com.iamnaran.common.log.AppLog
 import com.iamnaran.network.utils.ApiResponse
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -11,7 +13,7 @@ import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
-class LoginViewModel(private val loginUseCase: LoginUseCase) : ViewModel() {
+class LoginViewModel(private val loginUseCase: LoginUseCase, private val prefDataStoreHelper: PrefDataStoreHelper) : ViewModel() {
 
     private val _loginState = MutableStateFlow<LoginState>(LoginState.Idle)
     val loginState: StateFlow<LoginState> = _loginState
@@ -50,6 +52,7 @@ class LoginViewModel(private val loginUseCase: LoginUseCase) : ViewModel() {
     }
 
 
+
     private fun requestLogin() {
 
         if (_loginInputFieldsState.value.emailOrPhone.isBlank() || _loginInputFieldsState.value.password.isBlank()) {
@@ -79,6 +82,7 @@ class LoginViewModel(private val loginUseCase: LoginUseCase) : ViewModel() {
 
                         is ApiResponse.Success -> {
                             _loginState.value = LoginState.Success(it.body)
+                            saveLoggedInUserDetail(it.body)
                         }
 
                         else -> {
@@ -90,6 +94,13 @@ class LoginViewModel(private val loginUseCase: LoginUseCase) : ViewModel() {
                 }
         }
 
+    }
+
+
+    private fun saveLoggedInUserDetail(userResponse: UserResponse) {
+        viewModelScope.launch {
+            prefDataStoreHelper.saveLoggedInStatus()
+        }
     }
 
 

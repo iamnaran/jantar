@@ -8,9 +8,9 @@ import com.iamnaran.info.navigation.infoScreen
 import com.iamnaran.info.navigation.navigateToInfoScreen
 
 @Composable
-fun RootNavHost(navController: NavHostController) {
+fun RootNavHost(isLoggedIn: Boolean, navController: NavHostController) {
 
-    NavHost(navController, startDestination = AuthGraphRoute) {
+    NavHost(navController, startDestination = if (isLoggedIn) MainGraphRoute else AuthGraphRoute) {
         cameraPreviewScreen {
             navController.navigateToInfoScreen(it)
         }
@@ -20,8 +20,8 @@ fun RootNavHost(navController: NavHostController) {
 
         authNavigationGraph {
             navController.navigateToMainGraphRoute()
-
         }
+
 
         mainNavigationGraph()
 

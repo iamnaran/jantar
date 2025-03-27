@@ -5,8 +5,6 @@ import com.iamnaran.info.infoModule
 import org.koin.dsl.module
 
 val featureModules = module {
-
     includes(infoModule)
     includes(authModule)
-
 }

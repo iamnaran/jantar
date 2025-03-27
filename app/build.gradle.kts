@@ -55,7 +55,7 @@ dependencies {
     implementation(libs.koin.android)
     implementation(libs.koin.androidx.compose)
 
-
+    implementation(libs.androidx.activity.ktx)
     implementation(libs.splash.screen)
 
     testImplementation(libs.junit)
