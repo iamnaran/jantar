@@ -22,8 +22,9 @@ fun RootNavHost(isLoggedIn: Boolean, navController: NavHostController) {
             navController.navigateToMainGraphRoute()
         }
 
-
-        mainNavigationGraph()
+        mainNavigationGraph(){
+            navController.navigateToAuthNavGraph()
+        }
 
     }
 

@@ -18,7 +18,7 @@ data object HomeRoute
 @Serializable
 data object ExploreRoute
 
-fun NavGraphBuilder.mainNavigationGraph() {
+fun NavGraphBuilder.mainNavigationGraph(onNavigateBack: () -> Unit) {
     navigation<MainGraphRoute>(startDestination = HomeRoute) {
         composable<HomeRoute> {
             HomeScreen() {
@@ -26,6 +26,7 @@ fun NavGraphBuilder.mainNavigationGraph() {
         }
         composable<ExploreRoute> {
             ExploreScreen() {
+                onNavigateBack()
             }
         }
     }
