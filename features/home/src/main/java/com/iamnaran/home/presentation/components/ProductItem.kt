@@ -1,5 +1,9 @@
 package com.iamnaran.home.presentation.components
 
+
+import androidx.compose.animation.AnimatedVisibilityScope
+import androidx.compose.animation.ExperimentalSharedTransitionApi
+import androidx.compose.animation.SharedTransitionScope
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
@@ -29,10 +33,14 @@ import com.iamnaran.designsystem.theme.appTypography
 import com.iamnaran.designsystem.theme.dimens
 import com.iamnaran.home.data.Product
 
+
+@OptIn(ExperimentalSharedTransitionApi::class)
 @Composable
 fun ProductItem(
     product: Product,
-    onProductItemClick: (String) -> Unit
+    animatedVisibilityScope: AnimatedVisibilityScope? = null,
+    sharedTransitionScope: SharedTransitionScope? = null,
+    onProductItemClick: (Product) -> Unit,
 ) {
 
     val context = LocalContext.current
@@ -49,14 +57,28 @@ fun ProductItem(
     Card(
         modifier = Modifier
             .padding(MaterialTheme.dimens.sizeNormal)
+
             .shadow(
                 elevation = 5.dp,
                 spotColor = MaterialTheme.colorScheme.primaryContainer,
                 shape = MaterialTheme.shapes.medium
             )
             .clickable {
-                onProductItemClick("")
-            },
+                onProductItemClick(product)
+            }
+            .then(
+                if (sharedTransitionScope != null && animatedVisibilityScope != null) {
+                    with(sharedTransitionScope) {
+                        Modifier.sharedElement(
+                            rememberSharedContentState(key = "product_container_${product.id}"),
+                            animatedVisibilityScope,
+                            placeHolderSize = SharedTransitionScope.PlaceHolderSize.animatedSize
+                        )
+                    }
+                } else {
+                    Modifier
+                }
+            ),
         shape = MaterialTheme.shapes.medium
     ) {
         Column(
@@ -70,7 +92,20 @@ fun ProductItem(
                     .background(MaterialTheme.colorScheme.primaryContainer)
                     .fillMaxWidth()
                     .aspectRatio(1f)
-                    .height(200.dp),
+                    .height(200.dp)
+                    .then(
+                        if (sharedTransitionScope != null && animatedVisibilityScope != null) {
+                            with(sharedTransitionScope) {
+                                Modifier.sharedElement(
+                                    rememberSharedContentState(key = "product_image_${product.id}"),
+                                    animatedVisibilityScope,
+                                    placeHolderSize = SharedTransitionScope.PlaceHolderSize.animatedSize
+                                )
+                            }
+                        } else {
+                            Modifier
+                        }
+                    ),
                 contentScale = ContentScale.Crop,
             )
         }
@@ -105,9 +140,12 @@ fun ProductItem(
             Spacer(modifier = Modifier.height(8.dp))
         }
     }
+
+
 }
 
 
+@OptIn(ExperimentalSharedTransitionApi::class)
 @Preview("Login Screen")
 @Composable
 fun LoginScreenPreview() {

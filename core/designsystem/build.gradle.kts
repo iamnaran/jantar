@@ -54,6 +54,7 @@ dependencies {
     api(libs.androidx.ui.graphics)
     api(libs.androidx.ui.tooling.preview)
     api(libs.androidx.ui.tooling)
+    api(libs.compose.animation)
 
     api(libs.androidx.material3)
     api(libs.material.icons.extended)

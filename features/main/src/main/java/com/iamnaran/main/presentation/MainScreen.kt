@@ -15,10 +15,12 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.iamnaran.navigation.NavDestinationScreen
 import com.iamnaran.navigation.bar.AppBottomNavigation
+import com.iamnaran.navigation.bar.FancyAppBar
 import com.iamnaran.navigation.nav.AuthGraphRoute
 import com.iamnaran.navigation.nav.LoginRoute
 import com.iamnaran.navigation.nav.RegisterRoute
@@ -35,7 +37,8 @@ fun MainScreen(isLoggedIn: Boolean) {
     val navController = rememberNavController()
     val topAppbarTitle = remember { mutableStateOf("") }
     val topAppBarState = rememberTopAppBarState()
-    val barScrollBehavior = TopAppBarDefaults.enterAlwaysScrollBehavior(state = topAppBarState)
+    val barScrollBehavior =
+        TopAppBarDefaults.exitUntilCollapsedScrollBehavior(state = topAppBarState)
 
     val showBottomBarState = rememberSaveable { (mutableStateOf(false)) }
     val showTopBarState = rememberSaveable { (mutableStateOf(false)) }
@@ -82,12 +85,11 @@ fun MainScreen(isLoggedIn: Boolean) {
     }
 
 
-    Scaffold(modifier = Modifier.fillMaxSize(),
+    Scaffold(modifier = Modifier
+        .fillMaxSize()
+        .nestedScroll(barScrollBehavior.nestedScrollConnection),
         topBar = {
-//            AppTopBar("Jantar", barScrollBehavior, onActionCameraClick = {
-//                navController.navigateToCameraPreviewScreen()
-//            }){
-//            }
+            FancyAppBar(topAppbarTitle.value, barScrollBehavior)
         },
         bottomBar = {
             if (showBottomBarState.value) {
