@@ -47,6 +47,7 @@ dependencies {
     implementation(project(":core:common"))
     implementation(project(":core:network"))
     implementation(project(":core:designsystem"))
+    implementation(project(":features:home"))
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

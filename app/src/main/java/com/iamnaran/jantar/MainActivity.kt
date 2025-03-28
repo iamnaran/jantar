@@ -9,17 +9,11 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
-import androidx.lifecycle.lifecycleScope
 import com.iamnaran.common.data.PrefDataStoreHelper
-import com.iamnaran.common.dispatcher.DispatcherType
 import com.iamnaran.designsystem.theme.JantarTheme
 import com.iamnaran.main.presentation.MainScreen
-import kotlinx.coroutines.CoroutineDispatcher
-import kotlinx.coroutines.flow.first
-import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
 import org.koin.androidx.compose.KoinAndroidContext
-import org.koin.compose.getKoin
 import org.koin.core.annotation.KoinExperimentalAPI
 
 class MainActivity : ComponentActivity() {
@@ -31,13 +25,10 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         val splashScreen = installSplashScreen()
-
         setContent {
             JantarTheme {
                 KoinAndroidContext {
-                    val dataStoreHelper: PrefDataStoreHelper = getKoin().get()
-                    val isUserLoggedIn by dataStoreHelper.getLoggedInStatus()
-                        .collectAsState(initial = null)
+                    val isUserLoggedIn by dataStoreHelper.getLoggedInStatus().collectAsState(initial = null)
                     // Keep splash screen visible until isUserLoggedIn is loaded
                     splashScreen.setKeepOnScreenCondition {
                         isUserLoggedIn == null
@@ -50,7 +41,6 @@ class MainActivity : ComponentActivity() {
                 }
             }
         }
-
 
     }
 }

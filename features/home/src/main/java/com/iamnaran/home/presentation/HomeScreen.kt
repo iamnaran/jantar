@@ -2,25 +2,38 @@ package com.iamnaran.home.presentation
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.Text
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import com.iamnaran.home.data.Product
-import com.iamnaran.home.data.getSampleProducts
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.unit.dp
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.iamnaran.home.data.ProductResponse
 import com.iamnaran.home.presentation.components.ProductLazyList
+import org.koin.androidx.compose.koinViewModel
 
 @Composable
 fun HomeScreen(onNavigateBack: () -> Unit) {
 
-    HomeContent()
+    val viewModel: HomeViewModel = koinViewModel()
+    val context = LocalContext.current
+    val uiState = viewModel.uiState.collectAsStateWithLifecycle()
+
+
+    if (uiState.value is HomeUIState.Loading) {
+        CircularProgressIndicator(modifier = Modifier.padding(top = 16.dp))
+    }
+
+    if (uiState.value is HomeUIState.Success) {
+        HomeContent(uiState.value as HomeUIState.Success<ProductResponse>)
+    }
 
 }
 
 @Composable
-fun HomeContent() {
-
-
+fun HomeContent(productData: HomeUIState.Success<ProductResponse>) {
 
 
     Box(
@@ -28,12 +41,11 @@ fun HomeContent() {
         contentAlignment = Alignment.Center
     ) {
 
-        ProductLazyList(getSampleProducts()) {
+        ProductLazyList(productData.data.productEntities) {
 
         }
 
     }
-
 
 
 }

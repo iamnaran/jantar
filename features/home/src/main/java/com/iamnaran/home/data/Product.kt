@@ -3,6 +3,19 @@ package com.iamnaran.home.data
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
+
+@Serializable
+data class ProductResponse(
+    @SerialName("limit")
+    val limit: Int,
+    @SerialName("products")
+    val productEntities: List<Product>,
+    @SerialName("skip")
+    val skip: Int,
+    @SerialName("total")
+    val total: Int
+)
+
 @Serializable
 data class Product(
     @SerialName("id")

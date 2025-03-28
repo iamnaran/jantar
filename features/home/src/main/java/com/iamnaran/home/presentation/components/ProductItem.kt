@@ -37,9 +37,9 @@ fun ProductItem(
 
     val context = LocalContext.current
 
-    val imageRequest = remember("thumbnail") {
+    val imageRequest = remember(product.thumbnail) {
         ImageRequest.Builder(context)
-            .data("")
+            .data(product.thumbnail)
             .size(200, 200)
             .build()
     }
