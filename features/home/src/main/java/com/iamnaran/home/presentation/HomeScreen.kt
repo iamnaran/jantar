@@ -18,25 +18,27 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.iamnaran.home.data.Product
 import com.iamnaran.home.data.ProductResponse
-import com.iamnaran.home.presentation.components.ProductDetails
+import com.iamnaran.home.presentation.details.ProductDetails
 import com.iamnaran.home.presentation.components.ProductLazyList
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
-fun HomeScreen(onNavigateBack: () -> Unit) {
+fun HomeScreen(onNavigateBack: () -> Unit, navigateToDetails: () -> Unit) {
 
     val viewModel: HomeViewModel = koinViewModel()
     val context = LocalContext.current
     val uiState = viewModel.uiState.collectAsStateWithLifecycle()
 
 
-    HomeContent(uiState.value)
+    HomeContent(uiState.value) {
+
+    }
 
 }
 
 @OptIn(ExperimentalSharedTransitionApi::class)
 @Composable
-fun HomeContent(uiState: HomeUIState<ProductResponse>) {
+fun HomeContent(uiState: HomeUIState<ProductResponse>, navigateToDetails: () -> Unit) {
 
     var selectedProduct: Product? by remember { mutableStateOf(null) }
 
@@ -53,7 +55,10 @@ fun HomeContent(uiState: HomeUIState<ProductResponse>) {
                 if (uiState is HomeUIState.Success) {
                     ProductLazyList(
                         uiState.data.productEntities,
-                        onProductClick = { selectedProduct = it },
+                        onProductClick = {
+                            selectedProduct = it
+                            navigateToDetails()
+                        },
                         animatedVisibilityScope = this@AnimatedContent,
                         sharedTransitionScope = this@SharedTransitionLayout
                     )

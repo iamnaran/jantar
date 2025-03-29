@@ -1,4 +1,4 @@
-package com.iamnaran.home.presentation.components
+package com.iamnaran.home.presentation.details
 
 import androidx.compose.animation.AnimatedVisibilityScope
 import androidx.compose.animation.ExperimentalSharedTransitionApi
