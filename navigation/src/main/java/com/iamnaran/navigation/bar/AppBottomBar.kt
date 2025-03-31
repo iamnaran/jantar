@@ -23,6 +23,7 @@ fun AppBottomNavigation(navController: NavController) {
         listOf(
             NavDestinationScreen.Home,
             NavDestinationScreen.Explore,
+            NavDestinationScreen.ForYou,
         )
     }
     NavigationBar {

@@ -48,4 +48,7 @@ dependencies {
     implementation(project(":core:network"))
     implementation(project(":core:designsystem"))
 
+    implementation(libs.media3.exoplayer)
+    implementation(libs.media3.ui)
+
 }

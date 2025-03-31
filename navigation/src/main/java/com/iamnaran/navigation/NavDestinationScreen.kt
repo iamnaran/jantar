@@ -3,6 +3,7 @@ package com.iamnaran.navigation
 import androidx.compose.ui.graphics.vector.ImageVector
 import com.iamnaran.designsystem.theme.AppIcons
 import com.iamnaran.navigation.nav.ExploreRoute
+import com.iamnaran.navigation.nav.ForYouRoute
 import com.iamnaran.navigation.nav.HomeRoute
 import kotlinx.serialization.Contextual
 import kotlinx.serialization.Serializable
@@ -22,5 +23,10 @@ sealed class NavDestinationScreen<T>(
     data object Explore : NavDestinationScreen<ExploreRoute>(
         "Explore", ExploreRoute,
         AppIcons.ExploreFilled, AppIcons.ExploreOutlined
+    )
+
+    data object ForYou : NavDestinationScreen<ForYouRoute>(
+        "ForYou", ForYouRoute,
+        AppIcons.PlayFilled, AppIcons.PlayOutlined
     )
 }

@@ -6,6 +6,7 @@ import androidx.navigation.NavOptions
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.navigation
 import com.iamnaran.explore.presentation.ExploreScreen
+import com.iamnaran.explore.presentation.videos.ForYouPageScreen
 import com.iamnaran.home.presentation.HomeScreen
 import kotlinx.serialization.Serializable
 
@@ -18,16 +19,24 @@ data object HomeRoute
 @Serializable
 data object ExploreRoute
 
+@Serializable
+data object ForYouRoute
+
 fun NavGraphBuilder.mainNavigationGraph(onNavigateBack: () -> Unit) {
     navigation<MainGraphRoute>(startDestination = HomeRoute) {
         composable<HomeRoute> {
-            HomeScreen() {
+            HomeScreen(onNavigateBack = {}) {
+
             }
         }
         composable<ExploreRoute> {
             ExploreScreen() {
                 onNavigateBack()
             }
+        }
+
+        composable<ForYouRoute> {
+            ForYouPageScreen()
         }
     }
 }

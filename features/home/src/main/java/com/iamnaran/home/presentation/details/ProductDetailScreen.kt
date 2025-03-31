@@ -53,7 +53,6 @@ fun ProductDetails(
 
     val isExpanded by remember { mutableStateOf(false) }
 
-
     with(sharedTransitionScope) {
         Card(
             modifier = Modifier

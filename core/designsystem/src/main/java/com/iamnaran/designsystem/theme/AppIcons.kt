@@ -12,6 +12,7 @@ import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Lock
 import androidx.compose.material.icons.filled.Notifications
 import androidx.compose.material.icons.filled.Person
+import androidx.compose.material.icons.filled.PlayCircleFilled
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material.icons.filled.Visibility
 import androidx.compose.material.icons.filled.VisibilityOff
@@ -22,6 +23,7 @@ import androidx.compose.material.icons.outlined.Menu
 import androidx.compose.material.icons.outlined.Notifications
 import androidx.compose.material.icons.outlined.Person
 import androidx.compose.material.icons.outlined.PersonOutline
+import androidx.compose.material.icons.outlined.PlayCircleOutline
 import androidx.compose.material.icons.outlined.Settings
 
 object AppIcons {
@@ -44,6 +46,9 @@ object AppIcons {
 
     val ExploreOutlined = Icons.Outlined.Explore
     val ExploreFilled = Icons.Filled.Explore
+
+    val PlayOutlined = Icons.Outlined.PlayCircleOutline
+    val PlayFilled = Icons.Filled.PlayCircleFilled
 
     val Menu = Icons.Outlined.Menu
     val Person = Icons.Outlined.PersonOutline

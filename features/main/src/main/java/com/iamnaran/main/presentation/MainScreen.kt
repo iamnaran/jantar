@@ -33,6 +33,7 @@ import org.koin.androidx.compose.koinViewModel
 fun MainScreen(isLoggedIn: Boolean) {
 
     val viewModel: MainViewModel = koinViewModel()
+    val sharedViewModel: SharedViewModel = koinViewModel()
 
     val navController = rememberNavController()
     val topAppbarTitle = remember { mutableStateOf("") }
@@ -77,6 +78,14 @@ fun MainScreen(isLoggedIn: Boolean) {
             showTopBarState.value = true
             topAppbarTitle.value = NavDestinationScreen.Explore.name
         }
+
+        NavDestinationScreen.ForYou.route::class.qualifiedName -> {
+            showBottomBarState.value = true
+            showTopBarState.value = true
+            topAppbarTitle.value = NavDestinationScreen.Explore.name
+        }
+
+
 
         else -> {
             showBottomBarState.value = false
